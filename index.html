@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY073ZX38N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PY073ZX38N');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>PulseGames - Free Online Games | Play Instantly in Your Browser</title>
+    <meta name="description" content="Play free online games instantly! Snake, Breakout, PulseBlocks, Solitaire Collection and more. No downloads, no login required. Works on desktop and mobile.">
+    <meta name="keywords" content="free games, online games, browser games, snake game, breakout, tetris, block puzzle, solitaire, card games, arcade games">
+    <meta name="author" content="PulseGames">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pulsegames.eu/">
+    <meta property="og:title" content="PulseGames - Free Online Games">
+    <meta property="og:description" content="Play free games instantly in your browser. No downloads required!">
+    <meta property="og:image" content="https://pulsegames.eu/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PulseGames - Free Online Games">
+    <meta name="twitter:description" content="Play free games instantly. No downloads!">
+    <meta name="twitter:image" content="https://pulsegames.eu/assets/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://pulsegames.eu/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "PulseGames",
+        "url": "https://pulsegames.eu",
+        "description": "Free online games - play instantly in your browser",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://pulsegames.eu/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Games on PulseGames",
+        "itemListElement": [
+            {
+                "@type": "VideoGame",
+                "position": 1,
+                "name": "Snake Neo",
+                "description": "Classic Snake with 3 visual modes",
+                "url": "https://pulsegames.eu/snake/",
+                "genre": ["Arcade", "Retro"],
+                "gamePlatform": "Web Browser"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 2,
+                "name": "Breakout",
+                "description": "Classic brick-breaker arcade game",
+                "url": "https://pulsegames.eu/breakout/",
+                "genre": ["Arcade", "Classic"],
+                "gamePlatform": "Web Browser"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 3,
+                "name": "Tap Rush",
+                "description": "Fast-paced reaction speed game",
+                "url": "https://pulsegames.eu/taprush/",
+                "genre": ["Arcade", "Reaction"],
+                "gamePlatform": "Web Browser"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 4,
+                "name": "Solitaire Collection",
+                "description": "6 classic card games with leaderboards",
+                "url": "https://pulsegames.eu/solitaire/",
+                "genre": ["Cards", "Puzzle"],
+                "gamePlatform": "Web Browser"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 5,
+                "name": "PulseBlocks",
+                "description": "Synthwave block puzzle with Marathon, Sprint and Ultra modes",
+                "url": "https://pulsegames.eu/pulseblocks/",
+                "genre": ["Puzzle", "Arcade"],
+                "gamePlatform": "Web Browser"
+            },
+            {
+                "@type": "VideoGame",
+                "position": 6,
+                "name": "Connect 4",
+                "description": "Classic four-in-a-row strategy game",
+                "url": "https://pulsegames.eu/connect4/",
+                "genre": ["Strategy", "Classic"],
+                "gamePlatform": "Web Browser"
+            }
+        ]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #f472b6;
+            --accent: #fbbf24;
+            --success: #34d399;
+            
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            --text-dark: #1e293b;
+            --text-medium: #475569;
+            --text-light: #94a3b8;
+            
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background: var(--bg-card);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-gradient);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .logo-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            background: var(--bg-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .nav-link {
+            padding: 8px 16px;
+            color: var(--text-medium);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+        }
+        
+        .nav-link:hover {
+            background: #f1f5f9;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--bg-gradient);
+            padding: 60px 24px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 32px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 28px;
+            background: var(--bg-gradient);
+            border-radius: 2px;
+        }
+        
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        
+        .game-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .game-thumbnail {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .game-card:hover .game-thumbnail img {
+            transform: scale(1.05);
+        }
+        
+        .game-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--primary);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        
+        .game-badge.new { background: var(--success); }
+        .game-badge.popular { background: var(--secondary); }
+        .game-badge.hot { background: #ef4444; }
+        
+        .game-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .game-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        
+        .game-description {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            flex: 1;
+            line-height: 1.5;
+        }
+        
+        .game-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        
+        .tag {
+            background: #f1f5f9;
+            color: var(--text-medium);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--bg-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        
+        .game-card:hover .play-btn {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+        
+        /* Features Section */
+        .features-section {
+            margin-top: 60px;
+            padding: 48px;
+            background: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+        
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin: 0 auto 16px;
+        }
+        
+        .feature-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+        
+        .feature-text {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 48px 24px 24px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-brand {
+            max-width: 300px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .footer-logo-text {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-tagline {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column h4 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 4px 0;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            padding-top: 24px;
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 12px 16px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 40px 16px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                gap: 24px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            main {
+                padding: 24px 16px;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .features-section {
+                padding: 32px 20px;
+            }
+            
+            .footer-top {
+                flex-direction: column;
+            }
+            
+            .footer-links {
+                gap: 32px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .game-card {
+            animation: fadeInUp 0.5s ease-out both;
+        }
+        
+        .game-card:nth-child(1) { animation-delay: 0.1s; }
+        .game-card:nth-child(2) { animation-delay: 0.2s; }
+        .game-card:nth-child(3) { animation-delay: 0.3s; }
+        .game-card:nth-child(4) { animation-delay: 0.4s; }
+        .game-card:nth-child(5) { animation-delay: 0.5s; }
+        .game-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/" class="logo">
+                <div class="logo-icon">🎮</div>
+                <span class="logo-text">PulseGames</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#games" class="nav-link">Games</a>
+                <a href="/about/" class="nav-link">About</a>
+                <a href="/contact/" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Free Games, Instant Fun</h1>
+            <p>Play classic and arcade games right in your browser. No downloads, no signups – just pure gaming enjoyment.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Games Available</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Free to Play</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Downloads Needed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <main>
+        <div class="section-header">
+            <h2 class="section-title">All Games</h2>
+        </div>
+        
+        <div class="games-grid">
+            <!-- Snake -->
+            <a href="/snake/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/snake.jpg" alt="Snake Neo" loading="lazy">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Snake Neo</h3>
+                    <p class="game-description">Classic Snake with three unique modes – Nokia 3310 nostalgia, synthwave Neo, and 16-bit Fruit Chain.</p>
+                    <div class="game-tags">
+                        <span class="tag">Arcade</span>
+                        <span class="tag">Retro</span>
+                        <span class="tag">3 Modes</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+            
+            <!-- Breakout -->
+            <a href="/breakout/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/breakout.jpg" alt="Breakout Neon Drift" loading="lazy">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Breakout</h3>
+                    <p class="game-description">Smash bricks with your paddle and ball. Grab power-ups, beat levels, chase high scores!</p>
+                    <div class="game-tags">
+                        <span class="tag">Arcade</span>
+                        <span class="tag">Classic</span>
+                        <span class="tag">Power-ups</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+            
+            <!-- Tap Rush -->
+            <a href="/taprush/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/taprush.jpg" alt="Tap Rush Reflex" loading="lazy">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Tap Rush</h3>
+                    <p class="game-description">Test your reflexes! Tap fast, avoid bombs, and see how you rank against the clock.</p>
+                    <div class="game-tags">
+                        <span class="tag">Reaction</span>
+                        <span class="tag">Speed</span>
+                        <span class="tag">Challenge</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+            
+            <!-- Solitaire Collection -->
+            <a href="/solitaire/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/solitaire.png" alt="Solitaire Collection" loading="lazy">
+                    <span class="game-badge new">6 Games</span>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Solitaire Collection</h3>
+                    <p class="game-description">Klondike, FreeCell, Spider, Pyramid, TriPeaks & Golf. Global leaderboards included!</p>
+                    <div class="game-tags">
+                        <span class="tag">Cards</span>
+                        <span class="tag">Classic</span>
+                        <span class="tag">Leaderboards</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+            
+            <!-- PulseBlocks -->
+            <a href="/pulseblocks/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/pulseblocks.png" alt="PulseBlocks" loading="lazy">
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">PulseBlocks</h3>
+                    <p class="game-description">Synthwave block puzzle with Marathon, Sprint & Ultra modes. Global leaderboards!</p>
+                    <div class="game-tags">
+                        <span class="tag">Puzzle</span>
+                        <span class="tag">Synthwave</span>
+                        <span class="tag">Leaderboards</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+            
+            <!-- Connect 4 -->
+            <a href="/connect4/" class="game-card">
+                <div class="game-thumbnail">
+                    <img src="/assets/thumbnails/connect4-thumbnail.png" alt="Connect 4" loading="lazy">
+                    <span class="game-badge new">NEW</span>
+                </div>
+                <div class="game-info">
+                    <h3 class="game-title">Connect 4</h3>
+                    <p class="game-description">Classic four-in-a-row strategy game. Play against a friend or challenge the AI!</p>
+                    <div class="game-tags">
+                        <span class="tag">Strategy</span>
+                        <span class="tag">2 Player</span>
+                        <span class="tag">Classic</span>
+                    </div>
+                    <span class="play-btn">▶ Play Now</span>
+                </div>
+            </a>
+        </div>
+        
+        <section class="features-section">
+            <h2 class="section-title">Why PulseGames?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">🎮</div>
+                    <h3 class="feature-title">100% Free</h3>
+                    <p class="feature-text">All games are completely free to play, forever.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Instant Play</h3>
+                    <p class="feature-text">No downloads, no installs. Just click and play.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Works Everywhere</h3>
+                    <p class="feature-text">Desktop, tablet, or phone – your choice.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Leaderboards</h3>
+                    <p class="feature-text">Compete globally and climb the rankings.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">🎮</div>
+                        <span class="footer-logo-text">PulseGames</span>
+                    </div>
+                    <p class="footer-tagline">Free browser games for everyone. Made with ❤️ in Sweden.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Games</h4>
+                        <a href="/snake/">Snake Neo</a>
+                        <a href="/breakout/">Breakout</a>
+                        <a href="/taprush/">Tap Rush</a>
+                        <a href="/solitaire/">Solitaire</a>
+                        <a href="/pulseblocks/">PulseBlocks</a>
+                        <a href="/connect4/">Connect 4</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Info</h4>
+                        <a href="/about/">About</a>
+                        <a href="/contact/">Contact</a>
+                        <a href="/privacy/">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 PulseGames. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

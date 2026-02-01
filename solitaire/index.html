@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY073ZX38N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-PY073ZX38N");
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Solitaire Collection | PulseGames - Free Online Card Games</title>
+    <meta name="description" content="Play free Solitaire games online! Choose from Klondike, FreeCell, Spider and more. Beautiful graphics, touch support, no download required.">
+    <meta name="keywords" content="solitaire, klondike, freecell, spider, card games, free online games, patience">
+    <meta name="author" content="PulseGames">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Solitaire Collection | PulseGames">
+    <meta property="og:description" content="Play free Solitaire games online! Klondike, FreeCell, Spider and more.">
+    <meta property="og:image" content="https://pulsegames.eu/solitaire/og-image.png">
+    <meta property="og:url" content="https://pulsegames.eu/solitaire/">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Solitaire Collection | PulseGames">
+    <meta name="twitter:description" content="Play free Solitaire games online! Klondike, FreeCell, Spider and more.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231e6b30'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white'%3E♠%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%231e6b30'/%3E%3Ctext x='90' y='125' font-size='100' text-anchor='middle' fill='white'%3E♠%3C/text%3E%3C/svg%3E">
+    
+    <!-- Theme color -->
+    <meta name="theme-color" content="#1e6b30">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(145deg, #1e6b30 0%, #145222 50%, #0d3d18 100%);
+            --gold: #d4af37;
+            --gold-light: #f4d03f;
+            --text-primary: #f5f5f0;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .logo span {
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-items: center;
+            flex: 1;
+            align-content: center;
+        }
+
+        .game-card {
+            perspective: 1000px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .game-card-inner {
+            position: relative;
+            width: 100%;
+            padding-top: 140%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .game-card:hover .game-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .game-card-front, .game-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .game-card-front {
+            background: linear-gradient(145deg, #1a365d, #2c5282);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #234876;
+        }
+
+        .game-card-front.klondike {
+            background: linear-gradient(145deg, #1a365d, #2c5282);
+            border-color: #234876;
+        }
+
+        .game-card-front.freecell {
+            background: linear-gradient(145deg, #065f46, #047857);
+            border-color: #34d399;
+        }
+
+        .game-card-front.spider {
+            background: linear-gradient(145deg, #4c1d95, #6d28d9);
+            border-color: #a78bfa;
+        }
+
+        .game-card-front.pyramid {
+            background: linear-gradient(145deg, #b45309, #d97706);
+            border-color: #fbbf24;
+        }
+
+        .game-card-front.tripeaks {
+            background: linear-gradient(145deg, #0d9488, #14b8a6);
+            border-color: #2dd4bf;
+        }
+
+        .game-card-front.golf {
+            background: linear-gradient(145deg, #16a34a, #22c55e);
+            border-color: #4ade80;
+        }
+
+        .card-suit {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        .klondike .card-suit { color: #fff; }
+        .freecell .card-suit { color: #dc2626; }
+        .spider .card-suit { color: #fff; }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .game-card-back {
+            background: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .back-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .back-description {
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .back-difficulty {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 12px;
+            color: #777;
+            font-size: 0.7rem;
+        }
+
+        .difficulty-stars {
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .play-btn {
+            background: linear-gradient(135deg, var(--gold) 0%, #b8962e 100%);
+            color: #1a1a1a;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .play-btn:disabled {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .play-btn:disabled:hover {
+            transform: none;
+        }
+
+        .coming-soon {
+            background: rgba(0, 0, 0, 0.1);
+            color: #888;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Floating cards decoration */
+        .floating-cards {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-card {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(20px) rotate(-5deg); }
+        }
+
+        /* Mobile tap hint */
+        .tap-hint {
+            display: none;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        @media (hover: none) {
+            .tap-hint {
+                display: block;
+            }
+            
+            .game-card.tapped .game-card-inner {
+                transform: rotateY(180deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            header {
+                margin-bottom: 40px;
+            }
+
+            .games-grid {
+                gap: 30px;
+            }
+
+            .game-card {
+                max-width: 280px;
+            }
+
+            .card-suit {
+                font-size: 4.5rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decoration -->
+    <div class="floating-cards">
+        <div class="floating-card" style="top: 10%; left: 5%; animation-delay: 0s;">♠</div>
+        <div class="floating-card" style="top: 20%; right: 10%; animation-delay: -5s;">♥</div>
+        <div class="floating-card" style="top: 60%; left: 8%; animation-delay: -10s;">♦</div>
+        <div class="floating-card" style="top: 70%; right: 5%; animation-delay: -15s;">♣</div>
+        <div class="floating-card" style="top: 40%; left: 3%; animation-delay: -7s;">♠</div>
+        <div class="floating-card" style="top: 85%; right: 15%; animation-delay: -12s;">♥</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="logo">Solitaire Collection<span> | PulseGames</span></h1>
+            <p class="subtitle">Classic card games, beautifully crafted</p>
+        </header>
+
+        <div class="games-grid">
+            <!-- Klondike -->
+            <div class="game-card" onclick="navigateTo('klondike.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front klondike">
+                        <div class="card-suit">♠</div>
+                        <div class="card-title">Klondike</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">Klondike</div>
+                        <p class="back-description">
+                            The classic solitaire! Build four foundation piles from Ace to King. 
+                            The most popular card game in the world.
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★★☆☆☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FreeCell -->
+            <div class="game-card" onclick="navigateTo('freecell.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front freecell">
+                        <div class="card-suit">♦</div>
+                        <div class="card-title">FreeCell</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">FreeCell</div>
+                        <p class="back-description">
+                            A strategic challenge where nearly every game is winnable. 
+                            Use four free cells wisely to move cards around.
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★★★☆☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spider -->
+            <div class="game-card" onclick="navigateTo('spider.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front spider">
+                        <div class="card-suit">♠♠</div>
+                        <div class="card-title">Spider</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">Spider</div>
+                        <p class="back-description">
+                            Build sequences of cards from King to Ace. 
+                            Choose 1, 2, or 4 suits for varying difficulty.
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★★★★☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pyramid -->
+            <div class="game-card" onclick="navigateTo('pyramid.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front pyramid">
+                        <div class="card-suit">△</div>
+                        <div class="card-title">Pyramid</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">Pyramid</div>
+                        <p class="back-description">
+                            Match pairs of cards that add up to 13. 
+                            Clear the pyramid to win!
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★★☆☆☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TriPeaks -->
+            <div class="game-card" onclick="navigateTo('tripeaks.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front tripeaks">
+                        <div class="card-suit">⛰️</div>
+                        <div class="card-title">TriPeaks</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">TriPeaks</div>
+                        <p class="back-description">
+                            Clear three peaks by matching cards ±1. 
+                            Build streaks for bonus points!
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★★☆☆☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golf -->
+            <div class="game-card" onclick="navigateTo('golf.html', this)">
+                <div class="game-card-inner">
+                    <div class="game-card-front golf">
+                        <div class="card-suit">⛳</div>
+                        <div class="card-title">Golf</div>
+                    </div>
+                    <div class="game-card-back">
+                        <div class="back-title">Golf</div>
+                        <p class="back-description">
+                            Clear the course! Play cards ±1 from waste.
+                            Lower score is better - aim for par!
+                        </p>
+                        <div class="back-difficulty">
+                            Difficulty: <span class="difficulty-stars">★☆☆☆☆</span>
+                        </div>
+                        <button class="play-btn">Play Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="tap-hint">Tap a card to see details</p>
+
+        <footer>
+            <p>© 2025 <a href="https://pulsegames.eu">PulseGames.eu</a> — More games coming soon!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Handle navigation
+        function navigateTo(url, cardElement) {
+            // On touch devices, first tap flips, second tap navigates
+            if ('ontouchstart' in window) {
+                if (!cardElement.classList.contains('tapped')) {
+                    cardElement.classList.add('tapped');
+                    return;
+                }
+            }
+            
+            // Check if game is available (button not disabled)
+            const btn = cardElement.querySelector('.play-btn');
+            if (btn && btn.disabled) {
+                return;
+            }
+            
+            window.location.href = url;
+        }
+
+        // Reset tapped state when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.game-card')) {
+                document.querySelectorAll('.game-card.tapped').forEach(card => {
+                    card.classList.remove('tapped');
+                });
+            }
+        });
+
+        // Add staggered animation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.game-card');
+            cards.forEach((card, i) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 + i * 150);
+            });
+        });
+    </script>
+</body>
+</html>
