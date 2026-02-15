@@ -1,0 +1,86 @@
+[build]
+  publish = "."
+
+# Redirect trailing-slash-less URLs to trailing slash (for consistency with canonical URLs)
+[[redirects]]
+  from = "/snake"
+  to = "/snake/"
+  status = 301
+
+[[redirects]]
+  from = "/breakout"
+  to = "/breakout/"
+  status = 301
+
+[[redirects]]
+  from = "/taprush"
+  to = "/taprush/"
+  status = 301
+
+[[redirects]]
+  from = "/solitaire"
+  to = "/solitaire/"
+  status = 301
+
+[[redirects]]
+  from = "/pulseblocks"
+  to = "/pulseblocks/"
+  status = 301
+
+[[redirects]]
+  from = "/connect4"
+  to = "/connect4/"
+  status = 301
+
+[[redirects]]
+  from = "/axeluga"
+  to = "/axeluga/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301
+
+# Security and caching headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
