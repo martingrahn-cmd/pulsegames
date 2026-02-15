@@ -41,6 +41,36 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://pulsegames.eu/solitaire/klondike.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pulsegames.eu/solitaire/freecell.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pulsegames.eu/solitaire/spider.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pulsegames.eu/solitaire/pyramid.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pulsegames.eu/solitaire/tripeaks.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://pulsegames.eu/solitaire/golf.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://pulsegames.eu/about/</loc>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
