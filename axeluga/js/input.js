@@ -21,6 +21,9 @@ export class Input {
         // Is this a touch device?
         this.isTouchDevice = false;
 
+        // Autofire mode: fire automatically when moving via touch
+        this.autofire = false;
+
         // Fire button zone (bottom-right)
         this.fireZone = { x: GAME_W - 90, y: GAME_H - 90, w: 80, h: 80 };
         // Bomb button zone (bottom-left)
@@ -108,16 +111,29 @@ export class Input {
             const pos = this._gameCoords(t.clientX, t.clientY);
             if (this._tapCallback) this._tapCallback(pos.x, pos.y);
 
-            if (this._isInFireZone(pos.x, pos.y)) {
-                this.fireTouch = true;
-            } else if (this._isInBombZone(pos.x, pos.y)) {
-                this.bombTap = true;
-            } else if (!this.moveTouch) {
-                this.moveTouch = {
-                    id: t.identifier,
-                    x: pos.x,
-                    y: pos.y,
-                };
+            if (this.autofire) {
+                // Autofire: all touches are move touches (except bomb zone)
+                if (this._isInBombZone(pos.x, pos.y)) {
+                    this.bombTap = true;
+                } else if (!this.moveTouch) {
+                    this.moveTouch = {
+                        id: t.identifier,
+                        x: pos.x,
+                        y: pos.y,
+                    };
+                }
+            } else {
+                if (this._isInFireZone(pos.x, pos.y)) {
+                    this.fireTouch = true;
+                } else if (this._isInBombZone(pos.x, pos.y)) {
+                    this.bombTap = true;
+                } else if (!this.moveTouch) {
+                    this.moveTouch = {
+                        id: t.identifier,
+                        x: pos.x,
+                        y: pos.y,
+                    };
+                }
             }
         }
     }
@@ -339,6 +355,7 @@ export class Input {
     isFiring() {
         return this.keys['Space'] || this.keys['KeyZ']
             || this.fireTouch
+            || (this.autofire && this.moveTouch !== null)
             || this.gpButtons.fire
             || (this._mouseDown && !this.isTouchDevice);
     }
