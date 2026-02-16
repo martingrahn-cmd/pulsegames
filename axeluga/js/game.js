@@ -731,6 +731,7 @@ export class Game {
 
         // Settings (persisted)
         this._loadSettings();
+        this.input.autofire = this.settings.autofire;
         this.optionsCursor = 0;
         this._kLeftPrev = false;
         this._kRightPrev = false;
@@ -866,10 +867,10 @@ export class Game {
                     }
                 }
             } else if (this.state === 'options') {
-                // Touch volume sliders or BACK
-                const optStartY = 220;
-                const optSpacing = 80;
-                // Music slider: y~232-244, SFX slider: y~312-324
+                // Touch volume sliders, autofire toggle, or BACK
+                const optStartY = 195;
+                const optSpacing = 70;
+                // Music slider: y~207-219, SFX slider: y~277-289
                 for (let oi = 0; oi < 2; oi++) {
                     const barY = optStartY + oi * optSpacing + 12;
                     if (y > barY - 5 && y < barY + 17) {
@@ -881,8 +882,16 @@ export class Game {
                         return;
                     }
                 }
-                // BACK button area (y~380)
-                const backY = optStartY + 2 * optSpacing;
+                // Autofire toggle area (item index 2)
+                const afY = optStartY + 2 * optSpacing;
+                if (y > afY - 10 && y < afY + 35) {
+                    this.settings.autofire = !this.settings.autofire;
+                    this.input.autofire = this.settings.autofire;
+                    this.audio.menuClick();
+                    return;
+                }
+                // BACK button area (item index 3)
+                const backY = optStartY + 3 * optSpacing;
                 if (y > backY - 15 && y < backY + 25) {
                     this._saveSettings();
                     this.state = 'menu';
@@ -971,9 +980,10 @@ export class Game {
                 musicVol: s.musicVol !== undefined ? s.musicVol : 0.7,
                 sfxVol: s.sfxVol !== undefined ? s.sfxVol : 0.8,
                 difficulty: s.difficulty !== undefined ? s.difficulty : 1, // 0=easy, 1=medium, 2=hard
+                autofire: s.autofire !== undefined ? s.autofire : false,
             };
         } catch (e) {
-            this.settings = { musicVol: 0.7, sfxVol: 0.8, difficulty: 1 };
+            this.settings = { musicVol: 0.7, sfxVol: 0.8, difficulty: 1, autofire: false };
         }
     }
 
@@ -1206,7 +1216,7 @@ export class Game {
                 }
             }
         } else if (this.state === 'options') {
-            const optItems = 3; // Music, SFX, Gamepad (display only)
+            const optItems = 4; // Music, SFX, Autofire, Back
             if (navUp) { this.optionsCursor = (this.optionsCursor - 1 + optItems) % optItems; this.audio.menuClick(); }
             if (navDown) { this.optionsCursor = (this.optionsCursor + 1) % optItems; this.audio.menuClick(); }
             // Left/right to adjust volumes
@@ -1224,6 +1234,12 @@ export class Game {
                 if (left) this.settings.sfxVol = Math.max(0, this.settings.sfxVol - 0.1);
                 if (right) this.settings.sfxVol = Math.min(1, this.settings.sfxVol + 0.1);
                 if (left || right) this._applyVolumes();
+            } else if (this.optionsCursor === 2) { // Autofire
+                if (left || right || confirm) {
+                    this.settings.autofire = !this.settings.autofire;
+                    this.input.autofire = this.settings.autofire;
+                    this.audio.menuClick();
+                }
             }
             // ESC / Confirm on back
             if (this.input.keys['Escape'] && !this._escPrev) {
@@ -1232,7 +1248,7 @@ export class Game {
                 this.menuCursor = 1;
                 this.frame = 0;
             }
-            if (confirm && this.optionsCursor === 2) {
+            if (confirm && this.optionsCursor === 3) {
                 // "BACK" option
                 this._saveSettings();
                 this.state = 'menu';
@@ -1386,12 +1402,14 @@ export class Game {
         if (touchMove) {
             // Touch: move towards touch point (offset up so finger doesn't cover ship)
             const targetX = touchMove.x;
-            const targetY = touchMove.y - 50;
+            const targetY = touchMove.y - 70;
             const dx = targetX - p.x;
             const dy = targetY - p.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist > 2) {
-                const speed = Math.min(p.speed * 1.5, dist);
+            if (dist > 1) {
+                // Snappy response: high speed with smooth approach when close
+                const baseSpeed = p.speed * 3;
+                const speed = dist < baseSpeed ? dist * 0.8 : baseSpeed;
                 p.x += (dx / dist) * speed;
                 p.y += (dy / dist) * speed;
             }
@@ -3299,20 +3317,21 @@ export class Game {
 
         // ── Option items ──
         const items = [
-            { label: 'MUSIC', value: this.settings.musicVol, color: '#4af' },
-            { label: 'SFX', value: this.settings.sfxVol, color: '#f80' },
-            { label: 'BACK', value: null, color: '#888' },
+            { label: 'MUSIC', type: 'slider', value: this.settings.musicVol, color: '#4af' },
+            { label: 'SFX', type: 'slider', value: this.settings.sfxVol, color: '#f80' },
+            { label: 'AUTOFIRE', type: 'toggle', value: this.settings.autofire, color: '#0f0' },
+            { label: 'BACK', type: 'back', color: '#888' },
         ];
 
-        const startY = 220;
-        const spacing = 80;
+        const startY = 195;
+        const spacing = 70;
 
         for (let i = 0; i < items.length; i++) {
             const y = startY + i * spacing;
             const sel = this.optionsCursor === i;
             const item = items[i];
 
-            if (item.value !== null) {
+            if (item.type === 'slider') {
                 // Label
                 ctx.fillStyle = sel ? '#fff' : '#888';
                 ctx.font = `${sel ? 'bold ' : ''}14px "Courier New", monospace`;
@@ -3359,6 +3378,32 @@ export class Game {
                     ctx.fillText('◂', barX - 16, barY + 10);
                     ctx.fillText('▸', barX + barW + 16, barY + 10);
                 }
+            } else if (item.type === 'toggle') {
+                // Label
+                ctx.fillStyle = sel ? '#fff' : '#888';
+                ctx.font = `${sel ? 'bold ' : ''}14px "Courier New", monospace`;
+                ctx.fillText(item.label, cx, y);
+
+                // ON/OFF toggle
+                const toggleY = y + 14;
+                const onOff = item.value ? 'ON' : 'OFF';
+                const toggleColor = item.value ? item.color : '#f44';
+                ctx.fillStyle = sel ? toggleColor : '#555';
+                ctx.font = `${sel ? 'bold ' : ''}16px "Courier New", monospace`;
+                ctx.fillText(onOff, cx, toggleY + 4);
+
+                // Arrows if selected
+                if (sel) {
+                    ctx.fillStyle = '#0ff';
+                    ctx.font = '16px "Courier New", monospace';
+                    ctx.fillText('◂', cx - 36, toggleY + 4);
+                    ctx.fillText('▸', cx + 36, toggleY + 4);
+                }
+
+                // Hint text
+                ctx.fillStyle = sel ? '#666' : '#444';
+                ctx.font = '9px "Courier New", monospace';
+                ctx.fillText('fire when touching (mobile)', cx, toggleY + 18);
             } else {
                 // BACK button
                 if (sel) {
@@ -4302,24 +4347,26 @@ export class Game {
             puY -= 14;
         }
 
-        // ── Fire button (touch only) ──
+        // ── Fire button (touch only, hidden when autofire is on) ──
         if (this.input.isTouchDevice) {
-            const fz = this.input.fireZone;
-            const firing = this.input.isFiring();
-            ctx.globalAlpha = firing ? 0.6 : 0.25;
-            ctx.fillStyle = firing ? '#f44' : '#888';
-            ctx.beginPath();
-            ctx.arc(fz.x + fz.w / 2, fz.y + fz.h / 2, 32, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.strokeStyle = firing ? '#f88' : '#aaa';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.globalAlpha = firing ? 0.9 : 0.5;
-            ctx.fillStyle = '#fff';
-            ctx.font = 'bold 12px "Courier New", monospace';
-            ctx.textAlign = 'center';
-            ctx.fillText('FIRE', fz.x + fz.w / 2, fz.y + fz.h / 2 + 4);
-            ctx.globalAlpha = 1;
+            if (!this.input.autofire) {
+                const fz = this.input.fireZone;
+                const firing = this.input.isFiring();
+                ctx.globalAlpha = firing ? 0.6 : 0.25;
+                ctx.fillStyle = firing ? '#f44' : '#888';
+                ctx.beginPath();
+                ctx.arc(fz.x + fz.w / 2, fz.y + fz.h / 2, 32, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.strokeStyle = firing ? '#f88' : '#aaa';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.globalAlpha = firing ? 0.9 : 0.5;
+                ctx.fillStyle = '#fff';
+                ctx.font = 'bold 12px "Courier New", monospace';
+                ctx.textAlign = 'center';
+                ctx.fillText('FIRE', fz.x + fz.w / 2, fz.y + fz.h / 2 + 4);
+                ctx.globalAlpha = 1;
+            }
 
             if (this.bombs > 0) {
                 const bx = 15, by = GAME_H - 90;
