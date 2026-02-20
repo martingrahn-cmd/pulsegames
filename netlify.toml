@@ -57,7 +57,6 @@
   for = "/sitemap.xml"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
-    X-Robots-Tag = "noindex"
     Access-Control-Allow-Origin = "*"
 
 [[headers]]
