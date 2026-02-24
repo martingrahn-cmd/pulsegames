@@ -1,6 +1,6 @@
 # PulseGames – Improvements & Bug Fixes Roadmap
 
-> Full audit performed 2026-02-24. Prioritized by SEO & user impact.
+> Full audit performed 2026-02-24. Last updated 2026-02-24. Prioritized by SEO & user impact.
 
 ---
 
