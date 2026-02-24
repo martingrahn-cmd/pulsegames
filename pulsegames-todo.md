@@ -120,10 +120,11 @@
 **Issue:** All category pages use the generic `og-image.jpg`. Custom OG images per category would improve social sharing appearance.
 **Fix:** Create unique 1200x630 OG images for each category page showing the games in that category.
 
-### 17. Add `lang="en"` consistency check
-**Status:** Mostly fine
-**Issue:** During earlier audits, `taprush/index.html` was reported as having `lang="sv"` instead of `lang="en"`. Verify and fix if still present.
-**Fix:** Ensure all pages use `lang="en"` (or the correct language if content is translated).
+### 17. Fix `lang="sv"` on Tap Rush page – BUG
+**Status:** Not done
+**File:** `taprush/index.html` (line 20)
+**Issue:** Tap Rush has `<html lang="sv">` (Swedish) instead of `<html lang="en">`. All other pages correctly use `lang="en"`. This signals the wrong language to Google and screen readers.
+**Fix:** Change `lang="sv"` to `lang="en"` in `taprush/index.html`.
 
 ---
 
