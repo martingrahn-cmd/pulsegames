@@ -22,7 +22,7 @@
 **Fix:** Add unique SEO H1, 200-word content section, and rewrite meta titles for each variant. Example title: `"Play Klondike Solitaire Free Online | PulseGames"`.
 
 ### 3. Missing Twitter Card tags on some solitaire variants
-**Status:** Not done
+**Status:** Done
 **Files:** `solitaire/pyramid.html`, `solitaire/tripeaks.html`, `solitaire/golf.html`
 **Issue:** These files have `twitter:card` but are missing `twitter:description` and possibly `twitter:title`. Spider has partial Twitter tags.
 **Fix:** Add complete Twitter Card meta tags to all variant pages.
@@ -59,7 +59,7 @@
 **Fix:** Add category tag/link in game info or breadcrumb. Example: Snake page should link to `/arcade-games/`.
 
 ### 8. Add JSON-LD structured data to solitaire variant pages
-**Status:** Not done
+**Status:** Done
 **Files:** `solitaire/klondike.html`, `solitaire/freecell.html`, `solitaire/spider.html`, `solitaire/pyramid.html`, `solitaire/tripeaks.html`, `solitaire/golf.html`
 **Issue:** The main solitaire hub and all other game pages have VideoGame JSON-LD schema, but individual solitaire variants don't.
 **Fix:** Add VideoGame schema to each variant with unique name, description, genre, etc.
@@ -120,7 +120,7 @@
 **Fix:** Create unique 1200x630 OG images for each category page showing the games in that category.
 
 ### 17. Fix `lang="sv"` on Tap Rush page – BUG
-**Status:** Not done
+**Status:** Done
 **File:** `taprush/index.html` (line 20)
 **Issue:** Tap Rush has `<html lang="sv">` (Swedish) instead of `<html lang="en">`. All other pages correctly use `lang="en"`. This signals the wrong language to Google and screen readers.
 **Fix:** Change `lang="sv"` to `lang="en"` in `taprush/index.html`.
@@ -143,6 +143,10 @@
 - [x] Breadcrumb navigation (visible + JSON-LD) on all 12 game pages (#5)
 - [x] "You Might Also Like" related games section on all 13 game pages (#6)
 - [x] Game pages link to parent category via breadcrumbs (#7)
+- [x] Twitter Card tags completed on all solitaire variants + added twitter:image to 4 pages (#3)
+- [x] VideoGame JSON-LD schema on all 6 solitaire variant pages (#8)
+- [x] Fixed lang="sv" → lang="en" on Tap Rush (#17)
+- [x] Fixed Breakout SEO text overlapping game canvas (game-wrapper fix)
 
 ---
 
