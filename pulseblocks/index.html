@@ -72,6 +72,17 @@
     "playMode": "SinglePlayer"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pulsegames.eu/"},
+      {"@type": "ListItem", "position": 2, "name": "Puzzle Games", "item": "https://pulsegames.eu/puzzle-games/"},
+      {"@type": "ListItem", "position": 3, "name": "PulseBlocks", "item": "https://pulsegames.eu/pulseblocks/"}
+    ]
+  }
+  </script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PY073ZX38N"></script>
@@ -993,6 +1004,14 @@
     // Expose submit function globally
     window.submitGameScore = submitGameScore;
   </script>
+
+  <nav aria-label="Breadcrumb" style="max-width:800px;margin:2rem auto 0;padding:0 2rem;font-family:sans-serif;font-size:0.85rem;">
+    <a href="/" style="color:#a0a4c0;text-decoration:none;">Home</a>
+    <span style="color:#626580;margin:0 0.4rem;">›</span>
+    <a href="/puzzle-games/" style="color:#a0a4c0;text-decoration:none;">Puzzle Games</a>
+    <span style="color:#626580;margin:0 0.4rem;">›</span>
+    <span style="color:#f0f0ff;">PulseBlocks</span>
+  </nav>
 
   <section class="game-info" style="max-width:800px;margin:3rem auto 0;padding:2rem;color:#b0b0b0;font-size:0.95rem;line-height:1.7;position:relative;z-index:1;">
     <h1 style="color:#e0e0e0;font-size:1.6rem;margin-bottom:0.5rem;font-family:'Nunito',sans-serif;">PulseBlocks – Free Online Block Puzzle Game</h1>

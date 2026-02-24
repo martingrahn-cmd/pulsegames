@@ -54,6 +54,17 @@
       "playMode": ["SinglePlayer", "MultiPlayer"]
     }
     </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://pulsegames.eu/"},
+        {"@type": "ListItem", "position": 2, "name": "Board Games", "item": "https://pulsegames.eu/board-games/"},
+        {"@type": "ListItem", "position": 3, "name": "Connect 4", "item": "https://pulsegames.eu/connect4/"}
+      ]
+    }
+    </script>
 
     <!-- PWA -->
     <link rel="manifest" href="manifest.json">
@@ -3810,6 +3821,14 @@
             });
         }
     </script>
+
+    <nav aria-label="Breadcrumb" style="max-width:800px;margin:2rem auto 0;padding:0 2rem;font-family:sans-serif;font-size:0.85rem;">
+      <a href="/" style="color:#a0a4c0;text-decoration:none;">Home</a>
+      <span style="color:#626580;margin:0 0.4rem;">›</span>
+      <a href="/board-games/" style="color:#a0a4c0;text-decoration:none;">Board Games</a>
+      <span style="color:#626580;margin:0 0.4rem;">›</span>
+      <span style="color:#f0f0ff;">Connect 4</span>
+    </nav>
 
     <section class="game-info" style="max-width:800px;margin:3rem auto 0;padding:2rem;color:#a8b2d1;font-size:0.95rem;line-height:1.7;position:relative;z-index:1;">
       <h1 style="color:#fff;font-size:1.6rem;margin-bottom:0.5rem;font-family:'Outfit',sans-serif;">Play Connect 4 Online Free – Four in a Row</h1>
