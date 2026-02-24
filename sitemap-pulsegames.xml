@@ -85,6 +85,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://pulsegames.eu/arcade-games/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pulsegames.eu/action-games/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pulsegames.eu/puzzle-games/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://pulsegames.eu/board-games/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://pulsegames.eu/about/</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>yearly</changefreq>

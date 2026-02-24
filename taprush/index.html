@@ -330,7 +330,7 @@ html,body{
   <div id="centerText"></div>
   <div id="comboText"></div>
 
-  <div id="gameover"><h1>Game Over</h1><div id="summary"></div><small>Tap to restart</small></div>
+  <div id="gameover"><h2>Game Over</h2><div id="summary"></div><small>Tap to restart</small></div>
   <div id="brandIntro"><img id="brandLogo" alt="SmartProc Games"/></div>
   <div id="startOverlay">Tap to Start</div>
 
@@ -340,7 +340,7 @@ html,body{
     background:rgba(0,0,0,0.85);color:#e0faff;padding:24px 36px;
     border-radius:18px;font-size:22px;text-align:center;
     box-shadow:0 0 30px rgba(0,0,0,0.5);z-index:20;">
-    <h1 id="introTitle" style="margin:0 0 10px 0;color:var(--neon);">LEVEL 1</h1>
+    <h2 id="introTitle" style="margin:0 0 10px 0;color:var(--neon);">LEVEL 1</h2>
     <div id="introDesc"></div>
   </div>
 
@@ -574,7 +574,7 @@ const sumTitle=document.getElementById('sumTitle'), sumCore=document.getElementB
 
 const levelIntro=document.createElement('div'); levelIntro.id='levelIntro';
 levelIntro.style.cssText='display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.82);color:#e0faff;padding:24px 36px;border-radius:18px;font-size:22px;text-align:center;box-shadow:0 0 30px rgba(0,0,0,.5);z-index:9';
-levelIntro.innerHTML=`<h1 id="introTitle">LEVEL 1</h1><div id="introDesc"></div>`;
+levelIntro.innerHTML=`<h2 id="introTitle">LEVEL 1</h2><div id="introDesc"></div>`;
 document.getElementById('game').appendChild(levelIntro);
 const introTitle=document.getElementById('introTitle'), introDesc=document.getElementById('introDesc');
 
