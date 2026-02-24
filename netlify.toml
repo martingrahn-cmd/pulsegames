@@ -54,7 +54,7 @@
 
 # Ensure sitemap and robots.txt are accessible to search engine crawlers
 [[headers]]
-  for = "/sitemap.xml"
+  for = "/sitemap-pulsegames.xml"
   [headers.values]
     Content-Type = "application/xml; charset=utf-8"
     Access-Control-Allow-Origin = "*"
