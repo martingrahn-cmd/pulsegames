@@ -13,7 +13,7 @@
 **Fix:** Add the standardized footer (matching homepage) to all game pages for consistent navigation and internal linking. This is a big SEO win since internal links from every page strengthen category page authority.
 
 ### 2. Solitaire variant pages missing SEO content & H1
-**Status:** Not done
+**Status:** Done
 **Files:** `solitaire/klondike.html`, `solitaire/freecell.html`, `solitaire/spider.html`, `solitaire/pyramid.html`, `solitaire/tripeaks.html`, `solitaire/golf.html`
 **Issue:** None of the 6 solitaire variant pages have:
 - A proper SEO H1 tag (klondike only has `<h1>You Win!</h1>` in a modal, the rest have zero H1s)
@@ -138,6 +138,7 @@
 - [x] Add Categories column to homepage footer
 - [x] Update sitemap with 4 new category URLs
 - [x] All category pages have: JSON-LD (CollectionPage + BreadcrumbList), unique meta tags, SEO content, cross-category navigation
+- [x] Solitaire variant SEO: H1 tags, 200-word game-info sections, unique meta titles (all 6 pages)
 
 ---
 
