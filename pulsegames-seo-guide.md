@@ -121,7 +121,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 <!-- Open Graph -->
 <meta property="og:title" content="Play Snake Online Free – Classic Snake Game">
 <meta property="og:description" content="Three unique modes: retro Nokia 3310, synthwave Neo, and 16-bit Fruit Chain. No download required.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/snake.jpg">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/snake.webp">
 <meta property="og:url" content="https://pulsegames.eu/snake/">
 <meta property="og:type" content="website">
 ```
@@ -135,7 +135,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="Play Breakout Online Free – Brick Breaker Game">
 <meta property="og:description" content="Smash bricks, grab power-ups, beat levels and chase high scores. Free browser arcade game.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/breakout.jpg">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/breakout.webp">
 <meta property="og:url" content="https://pulsegames.eu/breakout/">
 <meta property="og:type" content="website">
 ```
@@ -149,7 +149,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="Tap Rush – Free Reaction Speed Test Game">
 <meta property="og:description" content="Test your reflexes! Tap fast, avoid bombs, and race the clock. Free in your browser.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/taprush.jpg">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/taprush.webp">
 <meta property="og:url" content="https://pulsegames.eu/taprush/">
 <meta property="og:type" content="website">
 ```
@@ -163,7 +163,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="Free Solitaire Online – 6 Card Games Collection">
 <meta property="og:description" content="Klondike, FreeCell, Spider, Pyramid, TriPeaks and Golf with global leaderboards. Play free in your browser.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/solitaire.png">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/solitaire.webp">
 <meta property="og:url" content="https://pulsegames.eu/solitaire/">
 <meta property="og:type" content="website">
 ```
@@ -177,7 +177,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="PulseBlocks – Free Block Puzzle Game Online">
 <meta property="og:description" content="Synthwave block puzzle with Marathon, Sprint and Ultra modes. Global leaderboards included.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/pulseblocks.png">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/pulseblocks.webp">
 <meta property="og:url" content="https://pulsegames.eu/pulseblocks/">
 <meta property="og:type" content="website">
 ```
@@ -191,7 +191,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="Play Connect 4 Online Free – Classic Strategy Game">
 <meta property="og:description" content="Classic four-in-a-row fun! Play against a friend or challenge the AI. Free in your browser.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/connect4-thumbnail.png">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/connect4-thumbnail.webp">
 <meta property="og:url" content="https://pulsegames.eu/connect4/">
 <meta property="og:type" content="website">
 ```
@@ -205,7 +205,7 @@ Uppdatera `<head>` i varje spel-HTML. Kontrollera att Open Graph-taggar finns.
 
 <meta property="og:title" content="Axeluga – Free Space Shooter Game Online">
 <meta property="og:description" content="Battle through 5 worlds, defeat epic bosses and save the galaxy. Free browser shoot-em-up with gamepad support.">
-<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/axeluga.jpg">
+<meta property="og:image" content="https://pulsegames.eu/assets/thumbnails/axeluga.webp">
 <meta property="og:url" content="https://pulsegames.eu/axeluga/">
 <meta property="og:type" content="website">
 ```
@@ -224,7 +224,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Snake Neo",
   "description": "Classic snake game with three unique modes – Nokia 3310 retro, synthwave Neo, and 16-bit Fruit Chain. Play free in your browser.",
   "url": "https://pulsegames.eu/snake/",
-  "image": "https://pulsegames.eu/assets/thumbnails/snake.jpg",
+  "image": "https://pulsegames.eu/assets/thumbnails/snake.webp",
   "genre": ["Arcade", "Retro", "Puzzle"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -256,7 +256,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Breakout Neon Drift",
   "description": "Classic brick breaker arcade game with power-ups, multiple levels and high scores. Play free in your browser.",
   "url": "https://pulsegames.eu/breakout/",
-  "image": "https://pulsegames.eu/assets/thumbnails/breakout.jpg",
+  "image": "https://pulsegames.eu/assets/thumbnails/breakout.webp",
   "genre": ["Arcade", "Classic", "Action"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -276,7 +276,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Tap Rush",
   "description": "Fast-paced reaction game. Tap quickly, avoid bombs, and test your reflexes against the clock. Free browser game.",
   "url": "https://pulsegames.eu/taprush/",
-  "image": "https://pulsegames.eu/assets/thumbnails/taprush.jpg",
+  "image": "https://pulsegames.eu/assets/thumbnails/taprush.webp",
   "genre": ["Arcade", "Reaction", "Casual"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -296,7 +296,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Solitaire Collection",
   "description": "Six classic card games in one: Klondike, FreeCell, Spider, Pyramid, TriPeaks and Golf. Global leaderboards. Play free online.",
   "url": "https://pulsegames.eu/solitaire/",
-  "image": "https://pulsegames.eu/assets/thumbnails/solitaire.png",
+  "image": "https://pulsegames.eu/assets/thumbnails/solitaire.webp",
   "genre": ["Card Game", "Classic", "Puzzle"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -316,7 +316,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "PulseBlocks",
   "description": "Synthwave-styled block puzzle game with Marathon, Sprint and Ultra modes. Global leaderboards. Play free in your browser.",
   "url": "https://pulsegames.eu/pulseblocks/",
-  "image": "https://pulsegames.eu/assets/thumbnails/pulseblocks.png",
+  "image": "https://pulsegames.eu/assets/thumbnails/pulseblocks.webp",
   "genre": ["Puzzle", "Arcade", "Strategy"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -336,7 +336,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Connect 4",
   "description": "Classic four-in-a-row strategy game. Play against a friend or challenge the AI. Free browser game.",
   "url": "https://pulsegames.eu/connect4/",
-  "image": "https://pulsegames.eu/assets/thumbnails/connect4-thumbnail.png",
+  "image": "https://pulsegames.eu/assets/thumbnails/connect4-thumbnail.webp",
   "genre": ["Strategy", "Classic", "Board Game"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
@@ -356,7 +356,7 @@ Lägg till ett `<script type="application/ld+json">` i `<head>` på varje spelsi
   "name": "Axeluga",
   "description": "Vertical space shooter with 5 worlds, epic boss battles, power-ups and gamepad support. Play free in your browser.",
   "url": "https://pulsegames.eu/axeluga/",
-  "image": "https://pulsegames.eu/assets/thumbnails/axeluga.jpg",
+  "image": "https://pulsegames.eu/assets/thumbnails/axeluga.webp",
   "genre": ["Shooter", "Arcade", "Action"],
   "gamePlatform": "Web Browser",
   "applicationCategory": "Game",
