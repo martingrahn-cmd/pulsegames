@@ -69,16 +69,14 @@
 ## MEDIUM PRIORITY – Performance & Technical
 
 ### 9. Image optimization – switch to WebP
-**Status:** Not done
-**Files:** `assets/thumbnails/*.jpg`, `assets/thumbnails/*.png`
-**Issue:** Thumbnails are in JPG/PNG format. WebP is 25-35% smaller with same quality and is supported by all modern browsers.
-**Fix:** Convert all thumbnail images to WebP format. Use `<picture>` element with JPG/PNG fallback, or just switch to WebP directly since browser support is universal now.
+**Status:** Done
+**Files:** `assets/thumbnails/*.webp`
+**Implementation:** Converted all 7 thumbnails from JPG/PNG to WebP (38% smaller total). Updated all references across 18 HTML files. Removed original files.
 
 ### 10. Add `<link rel="preload">` for critical assets
-**Status:** Not done
+**Status:** Done
 **Files:** All pages
-**Issue:** Google Fonts and critical CSS could load faster with preload hints.
-**Fix:** Add preload for the main font files and any above-the-fold images to improve Largest Contentful Paint (LCP).
+**Implementation:** Added `<link rel="preload" as="style">` for Google Fonts CSS on all 20 pages. Replaced `loading="lazy"` with `fetchpriority="high"` on above-the-fold thumbnails (homepage + 4 category pages). Added image preload for first homepage thumbnail.
 
 ### 11. Consider extracting shared CSS to external stylesheet
 **Status:** Not done
@@ -147,6 +145,8 @@
 - [x] VideoGame JSON-LD schema on all 6 solitaire variant pages (#8)
 - [x] Fixed lang="sv" → lang="en" on Tap Rush (#17)
 - [x] Fixed Breakout SEO text overlapping game canvas (game-wrapper fix)
+- [x] Converted all thumbnails to WebP – 38% smaller (#9)
+- [x] Added font CSS preload + above-the-fold image priority on all pages (#10)
 
 ---
 

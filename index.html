@@ -44,7 +44,11 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Preload above-the-fold thumbnail -->
+    <link rel="preload" as="image" type="image/webp" href="/assets/thumbnails/snake.webp">
     
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
@@ -827,7 +831,7 @@
             <!-- Snake -->
             <a href="/snake/" class="game-card">
                 <div class="game-thumbnail">
-                    <img src="/assets/thumbnails/snake.webp" alt="Snake Neo" loading="lazy">
+                    <img src="/assets/thumbnails/snake.webp" alt="Snake Neo" fetchpriority="high">
                 </div>
                 <div class="game-info">
                     <h3 class="game-title">Snake Neo</h3>
@@ -844,7 +848,7 @@
             <!-- Breakout -->
             <a href="/breakout/" class="game-card">
                 <div class="game-thumbnail">
-                    <img src="/assets/thumbnails/breakout.webp" alt="Breakout Neon Drift" loading="lazy">
+                    <img src="/assets/thumbnails/breakout.webp" alt="Breakout Neon Drift" fetchpriority="high">
                 </div>
                 <div class="game-info">
                     <h3 class="game-title">Breakout</h3>
