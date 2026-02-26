@@ -1,6 +1,6 @@
 # PulseGames – Improvements & Bug Fixes Roadmap
 
-> Full audit performed 2026-02-24. Last updated 2026-02-24. Prioritized by SEO & user impact.
+> Full audit performed 2026-02-24. Last updated 2026-02-26. Prioritized by SEO & user impact.
 
 ---
 
@@ -78,12 +78,10 @@
 **Files:** All pages
 **Implementation:** Added `<link rel="preload" as="style">` for Google Fonts CSS on all 20 pages. Replaced `loading="lazy"` with `fetchpriority="high"` on above-the-fold thumbnails (homepage + 4 category pages). Added image preload for first homepage thumbnail.
 
-### 11. Consider extracting shared CSS to external stylesheet
-**Status:** Not done
-**Issue:** Every page (especially the new category pages) has the full CSS inlined in `<style>` tags. This means:
-- CSS is re-downloaded on every page navigation (not cacheable)
-- Harder to maintain – changes need to be made in every file
-**Fix:** Extract the shared design system (header, footer, cards, typography, colors) into a shared `assets/styles.css` file. Keep only page-specific styles inline. Note: inline CSS does have the advantage of no extra HTTP request, so this is a trade-off. Consider extracting only if you plan to update the design frequently.
+### 11. Extract shared CSS to external stylesheet
+**Status:** Done
+**File:** `assets/styles.css`
+**Implementation:** Extracted ~550 lines of shared CSS (variables, reset, header, footer, game cards, breadcrumbs, category styles, content sections, responsive rules, animations) into `assets/styles.css`. Updated 9 pages (homepage, 4 category, about, contact, privacy, 404) to use it. Each page only keeps page-specific inline styles. Game pages (solitaire, snake, breakout, etc.) left untouched since they have unique themes.
 
 ### 12. Inconsistent PWA manifest
 **Status:** Inconsistent
@@ -147,6 +145,7 @@
 - [x] Fixed Breakout SEO text overlapping game canvas (game-wrapper fix)
 - [x] Converted all thumbnails to WebP – 38% smaller (#9)
 - [x] Added font CSS preload + above-the-fold image priority on all pages (#10)
+- [x] Extracted shared CSS to external `assets/styles.css` — 9 pages updated (#11)
 
 ---
 

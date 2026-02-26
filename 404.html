@@ -26,119 +26,18 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/assets/styles.css">
     <style>
-        :root {
-            --primary: #7c5cfc;
-            --primary-light: #a78bfa;
-            --primary-dark: #6341e0;
-            --secondary: #f472b6;
-            --accent: #06d6a0;
-            --accent-blue: #38bdf8;
-            --bg-body: #0f1221;
-            --bg-surface: #181c30;
-            --bg-card: rgba(25, 30, 55, 0.7);
-            --text-bright: #f0f0ff;
-            --text-medium: #a0a4c0;
-            --text-muted: #626580;
-            --border-subtle: rgba(124, 92, 252, 0.15);
-            --glow-primary: 0 0 20px rgba(124, 92, 252, 0.3);
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--bg-body);
-            color: var(--text-bright);
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 92, 252, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(56, 189, 248, 0.07), transparent),
-                radial-gradient(ellipse 60% 40% at 20% 80%, rgba(6, 214, 160, 0.05), transparent);
-            pointer-events: none;
-            z-index: 0;
+        footer {
+            margin-top: 0;
         }
 
-        /* Header */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 18, 33, 0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, var(--primary), var(--accent-blue));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--glow-primary);
-        }
-
-        .logo-text {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.7rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-light), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-        }
-
-        .nav-link {
-            color: var(--text-medium);
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--text-bright);
-            background: rgba(124, 92, 252, 0.1);
-        }
-
-        /* Main content */
         .content {
             flex: 1;
             display: flex;
@@ -160,7 +59,6 @@
             background-clip: text;
             line-height: 1;
             margin-bottom: 8px;
-            text-shadow: none;
         }
 
         .error-message {
@@ -176,7 +74,6 @@
             margin-bottom: 32px;
         }
 
-        /* Game container */
         .game-wrapper {
             position: relative;
             margin-bottom: 24px;
@@ -238,107 +135,10 @@
             box-shadow: 0 8px 30px rgba(124, 92, 252, 0.4);
         }
 
-        /* Footer */
-        footer {
-            background: var(--bg-surface);
-            border-top: 1px solid var(--border-subtle);
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 48px 24px 24px;
-        }
-
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-
-        .footer-brand { max-width: 300px; }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .footer-logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent-blue));
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo-text {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text-bright);
-        }
-
-        .footer-tagline {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 48px;
-        }
-
-        .footer-column {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-column h4 {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 700;
-            color: var(--text-bright);
-            margin-bottom: 12px;
-            font-size: 1rem;
-        }
-
-        .footer-column a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 4px 0;
-            transition: color 0.2s;
-        }
-
-        .footer-column a:hover { color: var(--primary-light); }
-
-        .footer-bottom {
-            border-top: 1px solid var(--border-subtle);
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
         @media (max-width: 768px) {
-            .header-content { padding: 12px 16px; }
-            .nav-links { display: none; }
-            .logo-text { font-size: 1.5rem; }
             .error-code { font-size: 5rem; }
             .error-message { font-size: 1.2rem; }
             .content { padding: 24px 16px; }
-            .footer-top { flex-direction: column; }
-            .footer-links { gap: 32px; }
         }
     </style>
 </head>
